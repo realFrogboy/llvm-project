@@ -1,4 +1,4 @@
-//===-- RArchTargetInfo.h - RArch Target Implementation --------*- C++ -*-===//
+//===-- GRISCVTargetInfo.h - GRISC-V Target Implementation --------*- C++ -*-===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
@@ -6,15 +6,12 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_LIB_TARGET_RArch_TARGETINFO_RArchTARGETINFO_H
-#define LLVM_LIB_TARGET_RArch_TARGETINFO_RArchTARGETINFO_H
+#pragma once
 
 namespace llvm {
 
 class Target;
 
-Target &getTheRArchTarget();
+Target &getTheRISCSTarget();
 
 } // end namespace llvm
-
-#endif // LLVM_LIB_TARGET_RArch_TARGETINFO_RArchTARGETINFO_H

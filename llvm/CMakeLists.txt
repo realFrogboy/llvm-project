@@ -499,6 +499,7 @@ set(LLVM_ALL_TARGETS
   PowerPC
   RArch
   RISCV
+  RArch
   Sparc
   SPIRV
   SystemZ

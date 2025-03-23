@@ -1,17 +1,7 @@
-//===-- RArchTargetMachine.h - Define TargetMachine for RArch ---*- C++ -*-===//
-//
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-//
-//===----------------------------------------------------------------------===//
-//
-// This file declares the RArch specific subclass of TargetMachine.
-//
-//===----------------------------------------------------------------------===//
+#ifndef __LLVM_LIB_TARGET_SIM_SIMTARGETMACHINE_H__
+#define __LLVM_LIB_TARGET_SIM_SIMTARGETMACHINE_H__
 
-#pragma once
-
+#include "RArchSubtarget.h"
 #include "MCTargetDesc/RArchMCTargetDesc.h"
 #include "llvm/CodeGen/SelectionDAGTargetInfo.h"
 #include "llvm/CodeGen/CodeGenTargetMachineImpl.h"
@@ -19,26 +9,37 @@
 #include <optional>
 
 namespace llvm {
-extern Target TheRArchTarget;
 
 class RArchTargetMachine : public CodeGenTargetMachineImpl {
   std::unique_ptr<TargetLoweringObjectFile> TLOF;
+  RArchSubtarget Subtarget;
+
 public:
   RArchTargetMachine(const Target &T, const Triple &TT, StringRef CPU,
-                      StringRef FS, const TargetOptions &Options,
-                      std::optional<Reloc::Model> RM,
-                      std::optional<CodeModel::Model> CM, CodeGenOptLevel OL,
-                      bool JIT, bool isLittle);
+                     StringRef FS, const TargetOptions &Options,
+                     std::optional<Reloc::Model> RM, std::optional<CodeModel::Model> CM,
+                     CodeGenOptLevel OL, bool JIT);
+  ~RArchTargetMachine() override;
 
-  RArchTargetMachine(const Target &T, const Triple &TT, StringRef CPU,
-                      StringRef FS, const TargetOptions &Options,
-                      std::optional<Reloc::Model> RM,
-                      std::optional<CodeModel::Model> CM, CodeGenOptLevel OL,
-                      bool JIT);
+  const RArchSubtarget *getSubtargetImpl() const { return &Subtarget; }
+  const RArchSubtarget *getSubtargetImpl(const Function &) const override {
+    return &Subtarget;
+  }
 
+  // Pass Pipeline Configuration
   TargetPassConfig *createPassConfig(PassManagerBase &PM) override;
   TargetLoweringObjectFile *getObjFileLowering() const override {
     return TLOF.get();
   }
+
+  MachineFunctionInfo *
+  createMachineFunctionInfo(BumpPtrAllocator &Allocator, const Function &F,
+                            const TargetSubtargetInfo *STI) const override;
 };
+
+FunctionPass *createRArchISelDag(RArchTargetMachine &TM,
+                                  CodeGenOptLevel OptLevel);
+
 } // end namespace llvm
+
+#endif // __LLVM_LIB_TARGET_SIM_SIMTARGETMACHINE_H__

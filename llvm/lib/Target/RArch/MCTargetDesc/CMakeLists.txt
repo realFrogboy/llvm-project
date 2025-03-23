@@ -1,5 +1,16 @@
 add_llvm_component_library(LLVMRArchDesc
   RArchMCTargetDesc.cpp
+  RArchInfo.cpp
+
+  RArchMCAsmInfo.cpp
+  RArchMCExpr.cpp
+  RArchObjectFileInfo.cpp
+  RArchInstPrinter.cpp
+  RArchTargetStreamer.cpp
+  RArchAsmBackend.cpp
+  RArchMCCodeEmitter.cpp
+  RArchElfObjectWriter.cpp
+  RArchElfStreamer.cpp
 
   LINK_COMPONENTS
   RArchInfo
