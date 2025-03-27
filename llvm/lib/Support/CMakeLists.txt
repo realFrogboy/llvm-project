@@ -230,6 +230,8 @@ add_llvm_component_library(LLVMSupport
   Regex.cpp
   RewriteBuffer.cpp
   RewriteRope.cpp
+  RArchAttributes.cpp
+  RArchISAInfo.cpp
   RISCVAttributes.cpp
   RISCVAttributeParser.cpp
   RISCVISAUtils.cpp

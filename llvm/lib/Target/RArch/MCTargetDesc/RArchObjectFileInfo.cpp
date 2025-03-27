@@ -1,4 +1,4 @@
-//===-- RISCSMCTargetDesc.h - RISCS Target Descriptions ---------*- C++ -*-===//
+//===-- RArchMCObjectFileInfo.cpp - rarch object file properties ----------===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
@@ -6,14 +6,14 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// This file provides RISCS specific target descriptions.
+// This file contains the declarations of the RArchMCObjectFileInfo properties.
 //
 //===----------------------------------------------------------------------===//
 
-#pragma once
+#include "RArchObjectFileInfo.h"
 
-#include "llvm/Config/config.h"
-#include "llvm/MC/MCTargetOptions.h"
-#include "llvm/Support/DataTypes.h"
-#include <memory>
+using namespace llvm;
 
+unsigned RArchMCObjectFileInfo::getTextSectionAlignment() const {
+  return 4;
+}

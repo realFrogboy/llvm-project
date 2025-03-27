@@ -110,6 +110,13 @@ StringRef llvm::object::getELFRelocationTypeName(uint32_t Machine,
       break;
     }
     break;
+  case ELF::EM_RArch:
+    switch (Type) {
+#include "llvm/BinaryFormat/ELFRelocs/RArch.def"
+      default:
+        break;
+    }
+    break;
   case ELF::EM_RISCV:
     switch (Type) {
 #include "llvm/BinaryFormat/ELFRelocs/RISCV.def"
