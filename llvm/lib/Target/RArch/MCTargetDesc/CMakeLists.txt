@@ -9,7 +9,7 @@ add_llvm_component_library(LLVMRArchDesc
   RArchTargetStreamer.cpp
   RArchAsmBackend.cpp
   RArchMCCodeEmitter.cpp
-  RArchElfObjectWriter.cpp
+  RArchELFObjectWriter.cpp
   RArchElfStreamer.cpp
 
   LINK_COMPONENTS

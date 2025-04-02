@@ -44,7 +44,7 @@ public:
   MachineBasicBlock *getBranchDestBlock(const MachineInstr &MI) const override;
 
   void copyPhysReg(MachineBasicBlock &MBB, MachineBasicBlock::iterator I,
-                   const DebugLoc &, MCRegister DestReg, MCRegister SrcReg,
+                   const DebugLoc &, Register DestReg, Register SrcReg,
                    bool KillSrc, bool, bool) const override;
 
   void storeRegToStackSlot(MachineBasicBlock &MBB,

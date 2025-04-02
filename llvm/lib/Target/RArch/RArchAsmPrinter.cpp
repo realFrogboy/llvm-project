@@ -119,9 +119,16 @@ public:
 #include "RArchGenMCPseudoLowering.inc"
 
 void RArchAsmPrinter::emitInstruction(const MachineInstr *MI) {
+  std::string msg;
+  raw_string_ostream Msg(msg);
+  Msg << *MI;
+  printf("[DUMP] %s\n\n", Msg.str().c_str());
+
   // Do any auto-generated pseudo lowerings.
-  if (MCInst OutInst; lowerPseudoInstExpansion(MI, OutInst))
+  if (MCInst OutInst; lowerPseudoInstExpansion(MI, OutInst)) {
     EmitToStreamer(*OutStreamer, OutInst);
+    return;
+  }
 
   MCInst TmpInst;
   if (!lowerRArchMachineInstrToMCInst(MI, TmpInst, *this))

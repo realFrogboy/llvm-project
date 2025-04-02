@@ -394,15 +394,6 @@ def ORI   : ALU_ri<0b110, "ori">;
 
 def ANDI  : ALU_ri<0b111, "andi">;
 
-// def GUI_FLUSH : rarchInstIntr<0b1111111, 0b000, OPC_INTRINSIC,
-//     (outs), (ins), "gui_flush", "">;
-// def GUI_RAND : rarchInstIntr<0b1111111, 0b001, OPC_INTRINSIC,
-//     (outs GPR:$rd), (ins), "gui_rand", "$rd">;
-// def GUI_QUIT_EVENT : rarchInstIntr<0b1111111, 0b010, OPC_INTRINSIC,
-//     (outs GPR:$rd), (ins), "gui_rand", "$rd">;
-def GUI_SET_PIXEL : rarchInstIntr<0b1111111, 0b011, OPC_INTRINSIC,
-    (outs), (ins GPR:$rd, GPR:$rs1, GPR:$rs2), "gui_set_pixel", "$rd, $rs1, $rs2">;
-
 // def : Pat<(int_rarch_rand GPR:$rs1), (RAND GPR:$rs1)>;
 // def : Pat<(int_rarch_gr_frame GPR:$rs1), (GET_FRAME GPR:$rs1)>;
 

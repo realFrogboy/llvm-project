@@ -134,9 +134,6 @@ void RArchDAGToDAGISel::Select(SDNode *Node) {
     ReplaceNode(Node, CurDAG->getMachineNode(rarch::ADDI, DL, VT, TFI, Imm));
     return;
   }
-
-  default:
-    dbgs() << "OPCODE: " << Opcode << '\n';
   }
 
   SelectCode(Node);

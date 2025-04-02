@@ -161,6 +161,11 @@ void RArchMCCodeEmitter::encodeInstruction(const MCInst &MI, SmallVectorImpl<cha
   const MCInstrDesc &Desc = MCII.get(MI.getOpcode());
   // Get byte count of instruction.
   unsigned Size = Desc.getSize();
+    
+  std::string msg;
+  raw_string_ostream Msg(msg);
+  Msg << MI;
+  printf("[DUMP] %s\n\n", Msg.str().c_str());
 
   // RArchInstrInfo::getInstSizeInBytes expects that the total size of the
   // expanded instructions for each pseudo is correct in the Size field of the

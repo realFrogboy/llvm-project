@@ -211,8 +211,8 @@ RArchInstrInfo::getBranchDestBlock(const MachineInstr &MI) const {
 
 void RArchInstrInfo::copyPhysReg(MachineBasicBlock &MBB,
                                   MachineBasicBlock::iterator MBBI,
-                                  const DebugLoc &DL, MCRegister DstReg,
-                                  MCRegister SrcReg, bool KillSrc, bool, bool) const {
+                                  const DebugLoc &DL, Register DstReg,
+                                  Register SrcReg, bool KillSrc, bool, bool) const {
   if (rarch::GPRRegClass.contains(DstReg, SrcReg)) {
     BuildMI(MBB, MBBI, DL, get(rarch::ADDI), DstReg)
         .addReg(SrcReg, getKillRegState(KillSrc))
