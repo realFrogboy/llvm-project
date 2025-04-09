@@ -114,15 +114,14 @@ class rarchInstR<bits<7> funct7, bits<3> funct3, rarchOpcode opcode, dag outs,
   let Opcode = opcode.Value;
 }
 
-class rarchInstIntr<bits<7> funct7, bits<3> funct3, rarchOpcode opcode, dag outs,
-              dag ins, string opcodestr, string argstr>
-    : rarchInst<outs, ins, opcodestr, argstr, [], InstFormatIntr> {
-  bits<5> rs2;
+class rarchInstIntr<bits<3> funct3, rarchOpcode opcode, dag outs,
+              dag ins, string opcodestr, string argstr, list<dag> pattern>
+    : rarchInst<outs, ins, opcodestr, argstr, pattern, InstFormatIntr> {
+  bits<12> imm12;
   bits<5> rs1;
   bits<5> rd;
 
-  let Inst{31-25} = funct7;
-  let Inst{24-20} = rs2;
+  let Inst{31-20} = imm12;
   let Inst{19-15} = rs1;
   let Inst{14-12} = funct3;
   let Inst{11-7} = rd;

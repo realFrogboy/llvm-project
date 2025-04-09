@@ -394,6 +394,22 @@ def ORI   : ALU_ri<0b110, "ori">;
 
 def ANDI  : ALU_ri<0b111, "andi">;
 
+def FILL : rarchInstIntr<0b000, OPC_INTRINSIC, (outs), (ins GPR:$rs1), "fill", "$rs1", [(int_rarch_fillscreen GPR:$rs1)]> {
+  let rd = 0;
+  let imm12 = 0;
+}
+
+def FLUSH : rarchInstIntr<0b001, OPC_INTRINSIC, (outs), (ins), "flush", "", [(int_rarch_flush)]> {
+  let rs1 = 0;
+  let rd = 0;
+  let imm12 = 0;
+}
+
+def DRAWCIRCLE : rarchInstIntr<0b010, OPC_INTRINSIC, (outs), (ins GPR:$rs1), "drawcrcl", "$rs1", [(int_rarch_drawcircle GPR:$rs1)]> {
+  let rd = 0;
+  let imm12 = 0;
+}
+
 // def : Pat<(int_rarch_rand GPR:$rs1), (RAND GPR:$rs1)>;
 // def : Pat<(int_rarch_gr_frame GPR:$rs1), (GET_FRAME GPR:$rs1)>;
 

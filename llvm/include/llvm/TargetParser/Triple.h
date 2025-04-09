@@ -75,7 +75,6 @@ public:
     rarch,          // RArch: reduced arch
     riscv32,        // RISC-V (32-bit): riscv32
     riscv64,        // RISC-V (64-bit): riscv64
-    rarch,          // RArch: RISC Simple architecure
     sparc,          // Sparc: sparc
     sparcv9,        // Sparcv9: Sparcv9
     sparcel,        // Sparc: (endianness = little). NB: 'Sparcle' is a CPU variant
