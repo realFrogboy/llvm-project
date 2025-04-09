@@ -251,6 +251,8 @@ static const char *getLDMOption(const llvm::Triple &T, const ArgList &Args) {
     return "elf64ppc";
   case llvm::Triple::ppc64le:
     return "elf64lppc";
+  case llvm::Triple::rarch:
+    return "elf64lrarch";
   case llvm::Triple::riscv32:
     return "elf32lriscv";
   case llvm::Triple::riscv64:
